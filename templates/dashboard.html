@@ -9,7 +9,31 @@
 </head>
 
 <body>
-    <h2>Welcome to the Django World!</h2>
+    <a href="{% url 'home-page' %}" >    <!-- used jinja template, this is it's syntax / it also contains dynamic content -->
+        <h2>Back to Home !</h2>
+    </a>
+    <h2>Dashboard page</h2>
+    
+    <hr>
+
+    <ul>
+        {% for num in numbers %}          <!-- different way of accessing python dictionary in html -->
+            <li>
+                {{ num }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <ul>
+        {% for name in names %}
+            <li>
+                {{ name }}
+            </li>
+        {% endfor %}
+        </ul>
+    
 </body>
 
 </html>

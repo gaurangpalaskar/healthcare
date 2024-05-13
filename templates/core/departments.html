@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+
+    <div class = "container" style="padding-top: 50px">
+
+        <table class = "table table-striped">
+
+            <thead class="thead-dark">
+
+                <tr>
+
+                    <th>DEPARTMENT ID</th>
+                    <th>DEPARTMENT NAME</th>
+                    <th>LOCATION</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for dept in depts %}
+                <tr>
+                    <td>{{dept.dept_id}}</td>
+                    <td>{{dept.dept_name}}</td>
+                    <td>{{dept.location}}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+    
+</body>
+
+</html>

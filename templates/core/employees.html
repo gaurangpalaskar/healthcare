@@ -1,0 +1,52 @@
+{% extends 'includes/base.html' %}
+
+{% block title %}
+<title>Employee Information</title>
+ {% endblock title %}
+
+{% block content %}
+
+        <table class = "table table-striped">
+
+            <thead class="thead-dark">
+
+                <tr>
+
+                    <th>EMPLOYEE ID</th>
+                    <th>EMPLOYEE NAME</th>
+                    <th>JOB</th>
+                    <th>MANAGER_ID</th>
+                    <th>HIRE_DATE</th>
+                    <th>SALARY</th>
+                    <th>COMMISSION</th>
+                    <th>DEPARTMENT ID</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for emp in emps %}
+                <tr>
+                    <td>{{emp.emp_id}}</td>
+                    <td>{{emp.emp_name}}</td>
+                    <td>{{emp.job}}</td>
+                    <td>{{emp.manager_id}}</td>
+                    <td>{{emp.hire_date}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>{{emp.comm}}</td>
+                    <td>
+                        <a href="{% url 'core:department_details' emp.dept_id_id %}">    <!-- dept_id_id coz it's a foreign key -->
+                            {{emp.dept_id_id}}
+                        </a>
+                        
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% endblock content %}

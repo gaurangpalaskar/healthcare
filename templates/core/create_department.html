@@ -1,0 +1,23 @@
+{% extends 'includes/base.html' %}
+
+{% block title %}
+<title>Create Department</title>
+ {% endblock title %}
+
+{% block content %}
+
+
+        <h2>Create a new Department</h2>
+        <hr>
+
+        <form method="post">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">Create a Department</button>
+
+        </form>
+
+{% endblock content %}       
+

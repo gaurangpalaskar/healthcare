@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html>
+{% extends 'includes/base.html' %}
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Dashboard</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
+{% block title %}
+<title>Back to Dashboard</title>
+ {% endblock title %}
 
-<body>
-    <a href="{% url 'core:dashboard-page' %}">    <!-- used jinja template, this is it's syntax / it also contains dynamic content -->
-        <h2>Back to Dashboard!</h2>
-    </a>
-    <h2>
-        {{message1}}         <!-- different way of accessing python dictionary in html -->
-    </h2>
-</body>
+{% block content %}
 
-</html>
+        <a href="{% url 'core:dashboard-page' %}">    <!-- used jinja template, this is it's syntax / it also contains dynamic content -->
+            <h2>Back to Dashboard!</h2>
+        </a>
+        <h2>
+            {{message1}}         <!-- different way of accessing python dictionary in html -->
+        </h2>
+
+{% endblock content %}

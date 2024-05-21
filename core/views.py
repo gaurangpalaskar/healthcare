@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from .models import Department
+from django.shortcuts import render,redirect
+from .models import Department,Employees
+from .forms import DepartmentForm,EmployeesForm
 
 def index(request):
     return HttpResponse("hello world!")
@@ -24,6 +25,42 @@ def get_departments(request):
     context = {"depts" : departments}
     return render(request,"core/departments.html",context)
 
+def get_employee_info(request):
+    employees = Employees.objects.all()
+    context = {"emps" : employees}                         
+    return render(request,"core/employees.html",context)
 
+def whatsmyname(request,name):
+    context = {"name" : name}                         
+    return render(request,"core/hello.html",context)
 
+def department_details(request,dept_id):
+    department = Department.objects.get(dept_id=dept_id)
+    context = {"department" : department}                         
+    return render(request,"core/department_details.html",context)
 
+def create_department(request):
+
+    if request.method == "POST":
+        form = DepartmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("core:departments")
+    else:
+        form = DepartmentForm
+
+    context = {"form" : form}
+    return render(request,"core/create_department.html",context)
+
+def create_employee(request):
+
+    if request.method == "POST":
+        form = EmployeesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("core:employees")
+    else:
+        form = EmployeesForm
+
+    context = {"form" : form}
+    return render(request,"core/create_employee.html",context)

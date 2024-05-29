@@ -1,0 +1,32 @@
+{% extends 'includes/base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+<title>HealthCare Clinic - Create a new Staff</title>
+{% endblock title %}
+
+{% block content %}
+<div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
+    <h4><b>Create a New Staff</b>
+    </h4>
+</div>
+<hr>
+
+<div class="row">
+
+    <form method="post" novalidate>
+
+        {% csrf_token %}
+
+        {% include "includes/form.html" %}
+
+        <button type="submit" class="btn btn-primary">Create a new Staff</button>
+
+    </form>
+
+</div>
+
+{% endblock content %}

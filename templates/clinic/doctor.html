@@ -1,0 +1,77 @@
+{% extends 'includes/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>HealthCare Clinic - Specialities</title>
+{% endblock title %}
+
+{% block content %}
+<div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
+    <h4><b>Dr. {{ doctor.name }}</b> | {{ doctor.speciality.name }}</h4>
+    <div>
+        <a href="{% url 'clinic:get_speciality' doctor.speciality.id %}" class="btn btn-primary">
+            Go to {{ doctor.speciality.name }} Speciality
+        </a>
+        <a href="{% url 'clinic:doctors' %}" class="btn btn-primary">Go to Doctors Dashboard</a>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+
+    <p>
+        Physical therapy (PT), also known as physiotherapy, is a healthcare profession, as well as the care provided by
+        physical therapists who promote, maintain, or restore health through patient education, physical intervention,
+        disease prevention, and health promotion. Physical therapist is the term used for such professionals in the
+        United States, and physiotherapist is the term used in many other countries.
+
+        The career has many specialties including musculoskeletal, orthopedics, cardiopulmonary, neurology,
+        endocrinology, sports medicine, geriatrics, pediatrics, women's health, wound care and electromyography. PTs
+        practice in many settings, both public and private.
+
+        In addition to clinical practice, other aspects of physical therapist practice include research, education,
+        consultation, and health administration. Physical therapy is provided as a primary care treatment or alongside,
+        or in conjunction with, other medical services. In some jurisdictions, such as the United Kingdom, physical
+        therapists may have the authority to prescribe medication.
+    </p>
+    <hr>
+
+    <table class="table table-striped table-bordered table-hover">
+
+        <thead>
+
+            <tr class="table-primary">
+                <th>Patient</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Mobile No.</th>
+                <th>Admitted On</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for patient in patients %}
+
+            <tr>
+
+                <td><a href="{% url 'clinic:get_patient' patient.id %}">{{ patient.name }}</a></td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.gender }}</td>
+                <td>{{ patient.mobile_number }}</td>
+                <td>{{ patient.admitted_on }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock content %}

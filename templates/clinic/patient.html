@@ -1,0 +1,53 @@
+{% extends 'includes/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>HealthCare Clinic - Patient</title>
+{% endblock title %}
+
+{% block content %}
+<div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
+    <h4><b>{{ patient.name }}</b> | under the care of Dr. {{ patient.doctor.name }}
+    </h4>
+    <div>
+        <a href="{% url 'clinic:get_doctor' patient.doctor.id %}" class="btn btn-primary">
+            Go to Dr. {{ patient.doctor.name }}
+        </a>
+        <a href="{% url 'clinic:patients' %}" class="btn btn-primary">Go to Patients Dashboard</a>
+    </div>
+</div>
+<hr>
+
+<div class="container mt-5">
+
+    <h4 style="margin-bottom: 30px;"><u>Patient Details</u></h4>
+
+    <p>
+        Patient <strong>{{ patient.name }}</strong> is a <strong>{{ patient.age }}</strong> year old
+        <strong>{{ patient.gender }}</strong> who is currently under the care of
+        <strong><a href="{% url 'clinic:get_doctor' patient.doctor.id %}">Dr. {{ patient.doctor.name }}</a></strong>.
+        They were admitted on
+        <strong>{{ patient.admitted_on|date:"F j, Y" }}</strong>.
+    </p>
+
+    <p>
+    <ul>
+        <li><strong>Full Name:</strong> {{ patient.name }}</li>
+        <li><strong>Age:</strong> {{ patient.age }}</li>
+        <li><strong>Gender:</strong> {{ patient.gender }}</li>
+        <li><strong>Mobile Number:</strong> {{ patient.mobile_number }}</li>
+        <li><strong>Admitted On:</strong> {{ patient.admitted_on|date:"F j, Y" }}</li>
+        <li><strong>Attending Doctor:</strong>
+            <a href="{% url 'clinic:get_doctor' patient.doctor.id %}">
+                Dr. {{ patient.doctor.name }}</a>
+        </li>
+    </ul>
+    </p>
+    <hr>
+
+
+</div>
+
+{% endblock content %}

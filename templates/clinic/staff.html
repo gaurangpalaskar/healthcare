@@ -1,0 +1,41 @@
+{% extends 'includes/base.html' %}
+
+
+{% block title %}
+<title>HealthCare Clinic - Staffs</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
+    <h4><b>{{ staff.name }}</b> | {{ staff.role }} | {{ staff.speciality.name }}</h4>
+    <div>
+        <a href="{% url 'clinic:get_speciality' staff.speciality.id %}" class="btn btn-primary">
+            Go to {{ staff.speciality.name }} Speciality
+        </a>
+        <a href="{% url 'clinic:staffs' %}" class="btn btn-primary">
+            Go to Staff Dashboard
+        </a>
+    </div>
+</div>
+<hr>
+
+<div class="container mt-5">
+    <h1 class="header-spacing" style="margin-bottom: 30px;"><u>Staff Details</u></h1>
+    <p>
+        Staff member <strong>{{ staff.name }}</strong> works as a <strong>{{ staff.role }}</strong> in the
+        <strong>{{ staff.speciality.name }}</strong> department. They play a crucial role in ensuring
+        the smooth operation of the department and providing excellent care to patients.
+    </p>
+    <ul>
+        <li><strong>Full Name:</strong> {{ staff.name }}</li>
+        <li><strong>Role:</strong> {{ staff.role }}</li>
+        <li><strong>Speciality:</strong>
+            <a href="{% url 'clinic:get_speciality' staff.speciality.id %}">
+                {{ staff.speciality.name }}
+            </a>
+        </li>
+    </ul>
+</div>
+
+{% endblock content %}

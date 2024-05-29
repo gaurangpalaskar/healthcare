@@ -1,0 +1,45 @@
+{% extends 'includes/base.html' %}
+
+
+{% block title %}
+<title>HealthCare Clinic - Doctors</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
+    <h4><b>Doctors</b></h4>
+    <a href="{% url 'clinic:new_doctor' %}" class="btn btn-primary">Add a New Doctor</a>
+</div>
+<hr>
+
+<table class="table table-striped table-bordered table-hover">
+
+    <thead>
+
+        <tr class="table-primary">
+            <th>Doctor</th>
+            <th>Education</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for doctor in doctors %}
+
+        <tr>
+
+            <td><a href="{% url 'clinic:get_doctor' doctor.id %}">Dr. {{ doctor.name }}</a></td>
+            <td>{{ doctor.education }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+{% endblock content %}

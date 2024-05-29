@@ -1,0 +1,44 @@
+{% extends 'includes/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>HealthCare Clinic - Specialities</title>
+{% endblock title %}
+
+{% block content %}
+<div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
+    <h4><b>Specialities</b></h4>
+    <a href="{% url 'clinic:new_speciality' %}" class="btn btn-primary">Add a New Speciality</a>
+</div>
+<hr>
+
+
+<div class="row">
+
+    {% for speciality in specialities %}
+
+    <div class="col-md-4">
+
+        <a href="{% url 'clinic:get_speciality' speciality.id %}">
+
+            <div class="card zoom">
+
+                <img class="card-img-top" src="{% static 'images/hospital-background.jpg' %}" alt="speciality image">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">{{ speciality.name|capfirst }}</h5>
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

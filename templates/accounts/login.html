@@ -5,17 +5,17 @@
 {% load widget_tweaks %}
 
 {% block title %}
-<title>HealthCare Clinic - Create a new Doctor</title>
+<title>HealthCare Clinic - Log In</title>
 {% endblock title %}
 
 {% block content %}
 <div class="header-row" style="display: flex; justify-content: space-between; align-items: center;">
-    <h4><b>Create a New Doctor</b>
+    <h4><b>Log In</b>
     </h4>
 </div>
 <hr>
 
-<div class="row">
+<div class="container">
 
     <form method="post" novalidate>
 
@@ -23,9 +23,10 @@
 
         {% include "includes/form.html" %}
 
-        <button type="submit" class="btn btn-primary">Create a new Doctor</button>
+        <button type="submit" class="btn btn-primary">Log In</button>
 
     </form>
+
 
 </div>
 

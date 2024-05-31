@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import SpecialityForm, DoctorForm, PatientForm, StaffForm
@@ -22,6 +23,7 @@ def get_speciality(request, id):
     return render(request, "clinic\speciality.html", context)
 
 
+@login_required
 def new_speciality(request):
     if request.method == "POST":
         form = SpecialityForm(request.POST)
@@ -48,6 +50,7 @@ def get_doctor(request, id):
     return render(request, "clinic\doctor.html", context)
 
 
+@login_required
 def new_doctor(request):
     if request.method == "POST":
         form = DoctorForm(request.POST)
@@ -73,6 +76,7 @@ def get_patient(request, id):
     return render(request, "clinic\patient.html", context)
 
 
+@login_required
 def new_patient(request):
     if request.method == "POST":
         form = PatientForm(request.POST)
@@ -98,6 +102,7 @@ def get_staff(request, id):
     return render(request, "clinic\staff.html", context)
 
 
+@login_required
 def new_staff(request):
     if request.method == "POST":
         form = StaffForm(request.POST)
